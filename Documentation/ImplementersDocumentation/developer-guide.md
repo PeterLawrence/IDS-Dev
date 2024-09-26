@@ -34,7 +34,7 @@ In addition, it is highly recommended to also provide the following features for
 
 ## Checking IDS against IFC
 
-Any software implementing IDS checking **must** comply with the test suite of IFC/IDS pairs available in the `Documentation/testcases` folder (see [test cases documentation](testscases/scripts.md)).
+Any software implementing IDS checking **must** comply with the test suite of IFC/IDS pairs available in the `Documentation/testcases` folder (see [test cases documentation](TestCases/scripts.md)).
 
 In addition, it is highly recommended to also provide the following features for users:
 
