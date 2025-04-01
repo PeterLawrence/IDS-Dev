@@ -14,10 +14,10 @@ class Build : NukeBuild
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     private readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    [PackageExecutable("ids-tool.CommandLine", "tools/net6.0/ids-tool.dll")]
+    [PackageExecutable("ids-tool.CommandLine", "tools/net8.0/ids-tool.dll")]
     private Tool IdsTool;
 
-    [PackageExecutable("dotnet-xscgen", "tools/net6.0/any/xscgen.dll")]
+    [PackageExecutable("dotnet-xscgen", "tools/net8.0/any/xscgen.dll")]
     private Tool SchemaTool;
 
 	static AbsolutePath SchemaProjectFolder { get; } = RepositoryRootDirectory / "RepositoryAutomation" / "SchemaProject";
@@ -166,7 +166,7 @@ class Build : NukeBuild
             );
         });
 
-    private string IdsToolPath => Path.GetDirectoryName(ToolPathResolver.GetPackageExecutable("ids-tool.CommandLine", "tools/net6.0/ids-tool.dll"));
+    private string IdsToolPath => Path.GetDirectoryName(ToolPathResolver.GetPackageExecutable("ids-tool.CommandLine", "tools/net8.0/ids-tool.dll"));
 
     /// <summary>
     /// Audits the validity of development folder in the repository, using ids-tool.
