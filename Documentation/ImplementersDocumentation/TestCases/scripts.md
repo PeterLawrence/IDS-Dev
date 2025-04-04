@@ -1740,16 +1740,16 @@ PartOf: ''IFCFURNITURE'',''WATERBOTTLE'',IFCRELNESTS
 
 ## property
 
-### A logical unknown is considered false and will not pass
+### A logical unknown is considered as not matching and will not pass
 
 IFCDURATION is not available in IFC2x3
 
 ``` ids property/fail-a_logical_unknown_is_considered_false_and_will_not_pass.ids
-A logical unknown is considered false and will not pass
+A logical unknown is considered as not matching and will not pass
 IFC4
 Entity: ''IFCWALL''
 Requirements:
-Property: ''Foo_Bar'',''Foo'',IFCDURATION
+Property: ''Foo_Bar'',''Foo'',IFCLOGICAL
 ```
 
 ### A name check will match any property with any string value
@@ -1881,13 +1881,13 @@ Requirements:
 Property: Pattern(''Foo_.*''),''Foo'',IFCLABEL
 ```
 
-### An empty string is considered false and will not pass
+### An empty string is considered not matching and will not pass
 
 ``` ids property/fail-an_empty_string_is_considered_false_and_will_not_pass.ids
-An empty string is considered false and will not pass
+An empty string is considered not matching and will not pass
 Entity: ''IFCWALL''
 Requirements:
-Property: ''Foo_Bar'',''Foo'',IFCLOGICAL
+Property: ''Foo_Bar'',''Foo'',IFCLABEL
 ```
 
 ### An optional facet always passes regardless of outcome 1/2
@@ -2422,7 +2422,7 @@ but they can also be associated to the relevant types. E.g. `Pset_WallCommon` on
 
 The provided IFC fails because one of the property sets defines the invalid value `FOOBAR`.
 
-``` ids property\fail-properties_can_be_associated_to_relevant_object_types.ids
+``` ids property/fail-properties_can_be_associated_to_relevant_object_types.ids
 Properties can be associated to relevant object types
 Optional
 IFC4
