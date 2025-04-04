@@ -9,29 +9,27 @@ using System.Reflection.Metadata;
 
 class Build : NukeBuild
 {
-    public static int Main() => Execute<Build>(x => x.AuditAllIdsFiles);
-    
-    [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-    private readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+	public static int Main() => Execute<Build>(x => x.AuditAllIdsFiles);
 
-    [PackageExecutable("ids-tool.CommandLine", "tools/net8.0/ids-tool.dll")]
-    private Tool IdsTool;
+	[Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
+	private readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    [PackageExecutable("dotnet-xscgen", "tools/net8.0/any/xscgen.dll")]
-    private Tool SchemaTool;
+	private Tool IdsTool => ToolResolver.GetNuGetTool("ids-tool.CommandLine", "tools/net8.0/ids-tool.dll");
+
+	private Tool SchemaTool => ToolResolver.GetNuGetTool( "dotnet-xscgen", "tools/net8.0/any/xscgen.dll");
 
 	static AbsolutePath SchemaProjectFolder { get; } = RepositoryRootDirectory / "RepositoryAutomation" / "SchemaProject";
-    static AbsolutePath SchemaProjectFileName { get; } = SchemaProjectFolder / "SchemaProject.csproj";
+	static AbsolutePath SchemaProjectFileName { get; } = SchemaProjectFolder / "SchemaProject.csproj";
 
     static AbsolutePath RepositoryRootDirectory
     {
         get
         {
-            var tmp = RootDirectory;
+            AbsolutePath tmp = RootDirectory;
             while (tmp != null)
             {
                 var p = tmp / "RepositoryAutomation";
-                if (p.Exists())
+                if (p.Exists("*directory"))
                     return tmp;
                 tmp = tmp.Parent;
 			}
@@ -166,7 +164,7 @@ class Build : NukeBuild
             );
         });
 
-    private string IdsToolPath => Path.GetDirectoryName(ToolPathResolver.GetPackageExecutable("ids-tool.CommandLine", "tools/net8.0/ids-tool.dll"));
+    // private string IdsToolPath => Path.GetDirectoryName(ToolPathResolver.Get ("ids-tool.CommandLine", "tools/net8.0/ids-tool.dll"));
 
     /// <summary>
     /// Audits the validity of development folder in the repository, using ids-tool.
@@ -181,7 +179,7 @@ class Build : NukeBuild
             var schemaFile = RepositoryRootDirectory / "Schema" / "ids.xsd";
             var inputFolder = RepositoryRootDirectory / "Documentation" / "Examples";
             var arguments = $"audit \"{inputFolder}\" -x \"{schemaFile}\"";
-            IdsTool(arguments, workingDirectory: IdsToolPath);
+            IdsTool(arguments);
         });
 
     /// <summary>
@@ -201,7 +199,7 @@ class Build : NukeBuild
             var schemaFile = RepositoryRootDirectory / "Schema" / "ids.xsd";
             var inputFolder = RepositoryRootDirectory / "Documentation" / "ImplementersDocumentation" / "TestCases";
             var arguments = $"audit \"{inputFolder}\" --omitContentAuditPattern \"[\\\\|/]invalid-\" -x \"{schemaFile}\"";
-            IdsTool(arguments, workingDirectory: IdsToolPath);
+            IdsTool(arguments);
         });
 
 	/// <summary>
@@ -228,7 +226,7 @@ class Build : NukeBuild
 				var arguments = $"audit \"{invalidFile}\" -x \"{schemaFile}\"";
                 try
                 {
-					var t = IdsTool(arguments, workingDirectory: IdsToolPath);
+					var t = IdsTool(arguments);
 				}
                 catch (ProcessException ex)
                 {

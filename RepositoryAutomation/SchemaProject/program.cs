@@ -74,6 +74,7 @@ class Program
 			if (line.StartsWith("``` ids "))
 			{
 				file = line.Substring(8);
+				file = file.Replace(@"\", "/");
 				inScript = true;
 				buffer = new StringBuilder();
 				firstLine = true;
@@ -134,10 +135,6 @@ class Program
 					Console.WriteLine("Suitable matching invalid IFC is found, it has been renamed.");
 					File.Move(item.FullName, invalidFileName);
 				}
-				//else if (allIfcFound)
-				//{
-				//	// item.Delete();
-				//}
 			}
 		}
 

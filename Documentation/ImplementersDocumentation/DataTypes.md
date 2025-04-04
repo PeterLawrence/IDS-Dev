@@ -405,20 +405,16 @@ Columns of the table determine the validity of the type depending on the schema 
 
 The list of valid XML base types for the `base` attribute of `xs:restriction`, and the associated regex expression to check for the validity of string representation is as follows:
 
-<!-- markdownlint-disable MD052 -->
-
-| Base type   | string regex constraint                                                  |
-| ----------- | ------------------------------------------------------------------------ |
-| xs:boolean  | ^(true&#124;false&#124;0&#124;1)$                                        |
-| xs:date     | ^\d{4}-\d{2}-\d{2}(Z&#124;([+-]\d{2}:\d{2}))?$                           |
-| xs:dateTime | ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z&#124;([+-]\d{2}:\d{2}))?$ |
-| xs:double   | ^([-+]?[0-9]*\.?[0-9]*([eE][-+]?[0-9]+)?&#124;NaN&#124;\+INF&#124;-INF)$ |
-| xs:duration | ^[-+]?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$                   |
-| xs:integer  | ^[+-]?(\d+)$                                                             |
-| xs:string   | ^.?$                                                                     |
-| xs:time     | ^\d{2}:\d{2}:\d{2}(\.\d+)?(Z&#124;([+-]\d{2}:\d{2}))?$                   |
-
-<!-- markdownlint-enable MD052 -->
+| Base type   | string regex constraint                                                        |
+| ----------- | ------------------------------------------------------------------------------ |
+| xs:boolean  | ```^(true&#124;false&#124;0&#124;1)$```                                        |
+| xs:date     | ```^\d{4}-\d{2}-\d{2}(Z&#124;([+-]\d{2}:\d{2}))?$```                           |
+| xs:dateTime | ```^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z&#124;([+-]\d{2}:\d{2}))?$``` |
+| xs:double   | ```^([-+]?[0-9]*\.?[0-9]*([eE][-+]?[0-9]+)?&#124;NaN&#124;\+INF&#124;-INF)$``` |
+| xs:duration | ```^[-+]?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$```                   |
+| xs:integer  | ```^[+-]?(\d+)$```                                                             |
+| xs:string   | ```^.?$```                                                                     |
+| xs:time     | ```^\d{2}:\d{2}:\d{2}(\.\d+)?(Z&#124;([+-]\d{2}:\d{2}))?$```                   |
 
 For example:
 

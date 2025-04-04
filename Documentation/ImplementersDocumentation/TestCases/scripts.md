@@ -2422,7 +2422,7 @@ but they can also be associated to the relevant types. E.g. `Pset_WallCommon` on
 
 The provided IFC fails because one of the property sets defines the invalid value `FOOBAR`.
 
-``` ids property\fail-properties_can_be_associated_to_relevant_object_types.ids
+``` ids property/fail-properties_can_be_associated_to_relevant_object_types.ids
 Properties can be associated to relevant object types
 Optional
 IFC4
