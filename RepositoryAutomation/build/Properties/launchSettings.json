@@ -9,8 +9,7 @@
       "commandLineArgs": "CreateTestCases"
     },
     "Standard run": {
-      "commandName": "Project",
-      "commandLineArgs": "CreateTestCases"
+      "commandName": "Project"
     },
     "CleanSchemaProject": {
       "commandName": "Project",
