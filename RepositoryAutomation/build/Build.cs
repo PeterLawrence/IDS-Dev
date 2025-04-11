@@ -164,6 +164,17 @@ class Build : NukeBuild
 			);
 		});
 
+	Target CreateTestCasesRenameSingleIfc => _ => _
+		.DependsOn(CleanSchemaProject)
+		.Executes(() =>
+		{
+			DotNetTasks.DotNetRun(s => s
+				.SetProjectFile(SchemaProjectFileName).SetConfiguration("Release").SetApplicationArguments(
+					"--rename-single-ifc"
+				)
+			);
+		});
+
 	// private string IdsToolPath => Path.GetDirectoryName(ToolPathResolver.Get ("ids-tool.CommandLine", "tools/net8.0/ids-tool.dll"));
 
 	/// <summary>
