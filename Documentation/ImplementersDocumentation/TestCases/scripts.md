@@ -2632,6 +2632,33 @@ Requirements:
 Attribute: ''Name'',Pattern(''[A-Z]{2}[0-9]{2}'')
 ```
 
+### Regex patterns work in OR 1/3
+
+``` ids restriction/pass-regex_patterns_work_in_OR_1_3.ids
+Regex patterns work in OR 1/3
+Entity: ''IFCWALL''
+Requirements:
+Attribute: ''Name'',Pattern(''[A-Z]{2}[0-9]{2}'') Pattern(''[a-z]{2}[0-9]{2}'')
+```
+
+### Regex patterns work in OR 2/3
+
+``` ids restriction/pass-regex_patterns_work_in_OR_2_3.ids
+Regex patterns work in OR 2/3
+Entity: ''IFCWALL''
+Requirements:
+Attribute: ''Name'',Pattern(''[a-z]{2}[0-9]{2}'') Pattern(''[A-Z]{2}[0-9]{2}'')
+```
+
+### Regex patterns work in OR 3/3
+
+``` ids restriction/fail-regex_patterns_work_in_OR_3_3.ids
+Regex patterns work in OR 3/3
+Entity: ''IFCWALL''
+Requirements:
+Attribute: ''Name'',Pattern(''[a-z]{3}[0-9]{2}'') Pattern(''[A-Z]{3}[0-9]{2}'')
+```
+
 ## tolerance
 
 ### Comparison tolerance for floating point positive high number lower bound pass
