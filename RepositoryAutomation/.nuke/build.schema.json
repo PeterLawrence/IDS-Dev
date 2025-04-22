@@ -30,6 +30,7 @@
         "CleanSchemaProject",
         "CompileSchemaProject",
         "CreateTestCases",
+        "CreateTestCasesRenameSingleIfc",
         "TestAccurateInvalid"
       ]
     },
